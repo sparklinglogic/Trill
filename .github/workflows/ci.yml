@@ -35,7 +35,10 @@ jobs:
       run: dotnet build -c Release Sources/Trill.sln
 
     - if: matrix.runs-on == 'ubuntu-latest' && github.ref != 'refs/heads/master' && !contains(github.ref, 'refs/tags/')
-      run: dotnet test -c Release Sources/Trill.sln
+      run: |
+        dotnet test -c Release --no-build --verbosity normal Sources/Trill.sln
+        dotnet pack -c Release --no-build  Sources/Trill.sln
+        dotnet nuget push .\bin\AnyCPU\Release\*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
 
     - if: (matrix.runs-on == 'ubuntu-latest') && (github.ref == 'refs/heads/master' || contains(github.ref, 'refs/tags/'))
       run: |
