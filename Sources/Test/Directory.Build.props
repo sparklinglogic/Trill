@@ -17,7 +17,6 @@
     <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)..\TrillKey.snk</AssemblyOriginatorKeyFile>
     
     <OutputPath>$(MSBuildThisFileDirectory)..\..\bintest\$(Platform)\$(Configuration)\</OutputPath>
-    <DocumentationFile>$(MSBuildThisFileDirectory)..\..\bintest\$(Platform)\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
   
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>

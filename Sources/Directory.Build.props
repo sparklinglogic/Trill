@@ -3,6 +3,7 @@
   <!-- Global include of the version file to avoid per-project link inclusion. -->
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CommonAssemblyInfo.cs" />
+	<PackageReference Include="MinVer" Version="5.0.0" PrivateAssets="All" />
   </ItemGroup>
 
   <!-- Setup global MSBuild variables -->
@@ -47,6 +48,12 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+<!-- Use MinVer for assembly versioning -->
+ <Target Name="SetAssemblyVersion" AfterTargets="MinVer">
+    <PropertyGroup>
+      <AssemblyVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch).0</AssemblyVersion>
+    </PropertyGroup>
+  </Target>
   <!-- End common properties for all projects -->
 
 </Project>
