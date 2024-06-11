@@ -3,6 +3,10 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <Platforms>x64;AnyCPU</Platforms>
+    <PackageId>Trill.NET</PackageId>
+    <PackageProjectUrl>https://github.com/sparklinglogic/Trill</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/sparklinglogic/Trill/releases</PackageReleaseNotes>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>
