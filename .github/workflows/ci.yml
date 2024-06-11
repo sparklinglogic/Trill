@@ -34,10 +34,10 @@ jobs:
     - if: contains(matrix.runs-on, 'macOS') || contains(matrix.runs-on, 'ubuntu')
       run: dotnet build -c Release Sources/Trill.sln
 
-    - if: matrix.runs-on == 'ubuntu' && github.ref != 'refs/heads/master' && !contains(github.ref, 'refs/tags/')
+    - if: matrix.runs-on == 'ubuntu-latest' && github.ref != 'refs/heads/master' && !contains(github.ref, 'refs/tags/')
       run: dotnet test -c Release Sources/Trill.sln
 
-    - if: (matrix.runs-on == 'ubuntu') && (github.ref == 'refs/heads/master' || contains(github.ref, 'refs/tags/'))
+    - if: (matrix.runs-on == 'ubuntu-latest') && (github.ref == 'refs/heads/master' || contains(github.ref, 'refs/tags/'))
       run: |
         dotnet pack -c Release --no-build  Sources/Trill.sln
         dotnet nuget push .\bin\AnyCPU\Release\*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
