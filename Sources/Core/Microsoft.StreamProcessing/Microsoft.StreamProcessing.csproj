@@ -4,6 +4,8 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <Platforms>x64;AnyCPU</Platforms>
     <PackageId>Trill.NET</PackageId>
+	<description>Trill is a high-performance one-pass in-memory streaming analytics engine</description>
+    <PackageTags>Streaming Temporal Data</PackageTags>
     <PackageProjectUrl>https://github.com/sparklinglogic/Trill</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/sparklinglogic/Trill/releases</PackageReleaseNotes>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
