@@ -9,6 +9,7 @@
   <!-- Setup global MSBuild variables -->
   <PropertyGroup>
     <EnlistmentRoot>$(MSBuildThisFileDirectory.TrimEnd({'\\'}))\..</EnlistmentRoot>
+	<MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
 
   <!-- Begin common properties for all projects -->
