@@ -202,11 +202,11 @@ namespace Microsoft.StreamProcessing
                 if (inputStream != null)
                 {
                     byte[] buffer = new byte[sizeof(int)];
-                    inputStream.Read(buffer, 0, sizeof(int));
+                    var len = inputStream.Read(buffer, 0, sizeof(int));
                     int major = BitConverter.ToInt32(buffer, 0);
-                    inputStream.Read(buffer, 0, sizeof(int));
+                    len = inputStream.Read(buffer, 0, sizeof(int));
                     int minor = BitConverter.ToInt32(buffer, 0);
-                    inputStream.Read(buffer, 0, sizeof(int));
+                    len = inputStream.Read(buffer, 0, sizeof(int));
                     int revision = BitConverter.ToInt32(buffer, 0);
 
                     if (major != CheckpointVersionMajor || minor != CheckpointVersionMinor || revision != CheckpointVersionRevision)
