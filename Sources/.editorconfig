@@ -51,3 +51,12 @@ csharp_new_line_before_finally = true
 csharp_indent_case_contents = true
 csharp_indent_switch_labels = true
 csharp_preserve_single_line_statements = false
+
+# test analyzer
+[*.{cs,vb}]
+dotnet_diagnostic.MSTEST0001.severity = none
+dotnet_diagnostic.MSTEST0023.severity = none
+dotnet_diagnostic.MSTEST0025.severity = none
+dotnet_diagnostic.MSTEST0030.severity = none
+dotnet_diagnostic.MSTEST0032.severity = none
+dotnet_diagnostic.MSTEST0037.severity = none

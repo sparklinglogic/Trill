@@ -3,7 +3,7 @@
   <!-- Global include of the version file to avoid per-project link inclusion. -->
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CommonAssemblyInfo.cs" />
-	<PackageReference Include="MinVer" Version="5.0.0" PrivateAssets="All" />
+	<PackageReference Include="MinVer" Version="7.0.0" PrivateAssets="All" />
   </ItemGroup>
 
   <!-- Setup global MSBuild variables -->

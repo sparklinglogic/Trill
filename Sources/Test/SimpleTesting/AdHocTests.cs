@@ -44,7 +44,7 @@ namespace SimpleTesting
                 .ToObservable()
                 .ToStreamable(DisorderPolicy.Throw(), FlushPolicy.FlushOnPunctuation, PeriodicPunctuationPolicy.None(), OnCompletedPolicy.None);
 
-            var q2 = q1.Select(x => string.Join(",", x.A, x.B, x.C, x.D, x.E));
+            var q2 = q1.Select(x => string.Join(",", new object[] { x.A, x.B, x.C, x.D, x.E }));
 
             int count = 0;
             q2.ToStreamEventObservable().ForEachAsync(x => count++).Wait();
@@ -67,7 +67,7 @@ namespace SimpleTesting
                 .ToObservable()
                 .ToStreamable(DisorderPolicy.Throw(), FlushPolicy.FlushOnPunctuation, PeriodicPunctuationPolicy.None(), OnCompletedPolicy.None);
 
-            var q2 = q1.Select(x => string.Join(",", x.A, x.B, x.C, x.D, x.E));
+            var q2 = q1.Select(x => string.Join(",", new object[] { x.A, x.B, x.C, x.D, x.E }));
 
             int count = 0;
             q2.ToStreamEventObservable().ForEachAsync(x => count++).Wait();
@@ -1271,7 +1271,7 @@ namespace SimpleTesting
         { }
 
         [TestMethod, TestCategory("Gated")]
-        public async Task DisposeTest1()
+        public void DisposeTest1()
         {
             var cancelTokenSource = new CancellationTokenSource();
             var inputSubject = new Subject<int>();
@@ -1300,15 +1300,15 @@ namespace SimpleTesting
             inputTask.Start();
 
             // Wait until we have at least one output data event.
-            await semaphore.WaitAsync();
+            semaphore.Wait();
 
             // Dispose the subscription.
             subscription.Dispose();
 
             // Keep the input feed going, before cancel. This should behave properly if the subscription is disposed of properly.
-            await Task.Delay(200);
+            Task.Delay(200).ConfigureAwait(true).GetAwaiter().GetResult();
             cancelTokenSource.Cancel();
-            await inputTask;
+            inputTask.ConfigureAwait(true).GetAwaiter().GetResult();
 
             // Make sure we really got an output data event.
             Assert.IsTrue(lastSeenSubscription > 0);
